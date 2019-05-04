@@ -2,9 +2,10 @@ import React from "react";
 import "./sass/_main.scss";
 
 import Input from './js/components/FilledInput';
+import SwitchToggle from "./js/components/Switch";
 
 import Button from "@material-ui/core/Button";
-import Switch from "@material-ui/core/Switch";
+
 
 // DatePicker
 import DatePicker from "react-datepicker";
@@ -52,17 +53,10 @@ class App extends React.Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="flightForm">
-          <div className="switch">
-            <div className="switch--wrapper">
-              <span className="switch--wrapper__text">Oneway trip</span>
-              <Switch
-                className="switch--wrapper__toggle"
-                onChange={this.handleChange}
-                name="oneway"
-                value={this.state.oneway}
-              />
-            </div>
-          </div>
+          <SwitchToggle
+            change={this.handleChange}
+            value={this.state.oneway}
+          />
           <div className="dates">
             <DatePicker
               className="dates__start"
@@ -76,15 +70,6 @@ class App extends React.Component {
             />
           </div>
           <div className="flightInput">
-            {/* <FilledInput
-              disableUnderline={true}
-              className="inputField inputField--left"
-              name="start"
-              onChange={this.handleChange}
-              required={true}
-              type="text"
-              value={this.state.start}
-            /> */}
             <Input
               change={this.handleChange}
               class="inputField inputField--left" 
