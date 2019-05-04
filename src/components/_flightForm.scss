@@ -1,16 +1,88 @@
 .flightForm {
+    @mixin flex-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    @mixin input-dimensions {
+        width: 12vw;
+        height: 5vh;
+    }
+
+    @mixin input-color {
+        background-color: $neutral-cool-grey-2;
+    }
+
+    $input-margin: 5vh;
+
+    background-color: $primary-lt-blue;
+    position: absolute;
     width: 40vw;
     height: 50vh;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    justify-content: space-between;
+
+    top: 30%;
+    left: 80%;
+
+    transform: translate(-60%, -10%);
+
+    .dates {
+        width: 100%;
+        @include flex-input;
+
+        &__start, &__end {
+            @include input-dimensions;
+            @include input-color;
+            border: none;
+        }
+
+        &__start {
+            margin-left: $input-margin;
+        }
+
+        &__end {
+            margin-right: $input-margin;
+        }
+
+
+
+    }
 
     .flightInput {
+        @include flex-input;
         width: 100%;
+
+        .inputField {
+            @include input-dimensions;
+            @include input-color;
+
+            &--left {
+                margin-left: $input-margin;
+            }
+
+            &--right {
+                margin-right: $input-margin;
+            }
+        }
+    }
+
+    .switchButton {
+        width: 100%;
+        background-color: $neutral-cool-grey-3;
     }
 
     .submitButton {
         width: 100%;
-        height: 10%;
+        height: 20%;
+        color: white;
+        background-color: $neutral-cool-grey;
+
+        &:hover {
+            background-color: $primary-green;
+        }
     }
 }
