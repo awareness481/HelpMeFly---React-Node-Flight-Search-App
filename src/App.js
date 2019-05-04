@@ -3,8 +3,9 @@ import "./sass/_main.scss";
 
 import Input from './js/components/FilledInput';
 import SwitchToggle from "./js/components/Switch";
+import SubmitButton from './js/components/Button';
 
-import Button from "@material-ui/core/Button";
+
 
 
 // DatePicker
@@ -75,19 +76,15 @@ class App extends React.Component {
               class="inputField inputField--left" 
               dest={this.state.start}
               name="start"
-            >
-            </Input>
+            />
             <Input
               change={this.handleChange}
               class="inputField inputField--right" 
               dest={this.state.destination}
               name="destination"
-            >
-            </Input>
+            />
           </div>
-          <Button type="submit" value="Submit" className="submitButton">
-            Submit
-          </Button>
+          <SubmitButton />
         </form>
       </div>
     );
