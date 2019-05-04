@@ -1,5 +1,5 @@
 import React from "react";
-import "./_main.scss";
+import "./sass/_main.scss";
 
 import Button from "@material-ui/core/Button";
 import FilledInput from "@material-ui/core/FilledInput";
