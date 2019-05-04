@@ -59,6 +59,7 @@
         .inputField {
             @include input-dimensions;
             @include input-color;
+            border: none;
 
             &--left {
                 margin-left: $input-margin;
@@ -70,9 +71,21 @@
         }
     }
 
-    .switchButton {
+    .switch {
         width: 100%;
-        background-color: $neutral-cool-grey-3;
+        background-color: white;
+
+        &--wrapper {
+            margin-left: $input-margin + 5vh;
+
+            &__toggle {
+                padding: 0;
+            }
+
+            &__text {
+                color: $neutral-cool-grey-1;
+            }
+        }
     }
 
     .submitButton {

@@ -1,8 +1,9 @@
 import React from "react";
 import "./sass/_main.scss";
 
+import Input from './js/components/FilledInput';
+
 import Button from "@material-ui/core/Button";
-import FilledInput from "@material-ui/core/FilledInput";
 import Switch from "@material-ui/core/Switch";
 
 // DatePicker
@@ -51,44 +52,53 @@ class App extends React.Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="flightForm">
-          <div className='switchButton'>
-            <Switch
-              onChange={this.handleChange}
-              name="oneway"
-              value={this.state.oneway}
-            />
+          <div className="switch">
+            <div className="switch--wrapper">
+              <span className="switch--wrapper__text">Oneway trip</span>
+              <Switch
+                className="switch--wrapper__toggle"
+                onChange={this.handleChange}
+                name="oneway"
+                value={this.state.oneway}
+              />
+            </div>
           </div>
           <div className="dates">
             <DatePicker
-              className='dates__start'
+              className="dates__start"
               selected={this.state.startDate}
               onChange={e => this.handleDate(e, "startDate")}
             />
             <DatePicker
-              className='dates__end'
+              className="dates__end"
               selected={this.state.endDate}
               onChange={e => this.handleDate(e, "endDate")}
             />
           </div>
           <div className="flightInput">
-            <FilledInput
+            {/* <FilledInput
               disableUnderline={true}
-              className='inputField inputField--left'
+              className="inputField inputField--left"
               name="start"
               onChange={this.handleChange}
               required={true}
               type="text"
               value={this.state.start}
-            />
-            <FilledInput
-              disableUnderline={true}
-              className='inputField inputField--right'
+            /> */}
+            <Input
+              change={this.handleChange}
+              class="inputField inputField--left" 
+              dest={this.state.start}
+              name="start"
+            >
+            </Input>
+            <Input
+              change={this.handleChange}
+              class="inputField inputField--right" 
+              dest={this.state.destination}
               name="destination"
-              onChange={this.handleChange}
-              required={true}
-              type="text"
-              value={this.state.destination}
-            />
+            >
+            </Input>
           </div>
           <Button type="submit" value="Submit" className="submitButton">
             Submit
