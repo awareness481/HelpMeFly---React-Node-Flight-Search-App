@@ -2,11 +2,7 @@ import React from "react";
 import "./sass/_main.scss";
 
 import Input from './js/components/FilledInput';
-import SwitchToggle from "./js/components/Switch";
 import SubmitButton from './js/components/Button';
-
-
-
 
 // DatePicker
 import DatePicker from "react-datepicker";
@@ -54,22 +50,6 @@ class App extends React.Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="flightForm">
-          <SwitchToggle
-            change={this.handleChange}
-            value={this.state.oneway}
-          />
-          <div className="dates">
-            <DatePicker
-              className="dates__start"
-              selected={this.state.startDate}
-              onChange={e => this.handleDate(e, "startDate")}
-            />
-            <DatePicker
-              className="dates__end"
-              selected={this.state.endDate}
-              onChange={e => this.handleDate(e, "endDate")}
-            />
-          </div>
           <div className="flightInput">
             <Input
               change={this.handleChange}
@@ -82,6 +62,18 @@ class App extends React.Component {
               class="inputField inputField--right" 
               dest={this.state.destination}
               name="destination"
+            />
+          </div>
+          <div className="dates">
+            <DatePicker
+              className="dates__start"
+              selected={this.state.startDate}
+              onChange={e => this.handleDate(e, "startDate")}
+            />
+            <DatePicker
+              className="dates__end"
+              selected={this.state.endDate}
+              onChange={e => this.handleDate(e, "endDate")}
             />
           </div>
           <SubmitButton />
