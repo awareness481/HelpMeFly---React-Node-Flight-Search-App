@@ -11,6 +11,8 @@ const Input = props => {
       required={true}
       type="text"
       value={props.dest}
+      placeholder={props.plch}
+      autoComplete='off'
     />
   )
 }

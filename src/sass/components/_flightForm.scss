@@ -36,25 +36,27 @@
         
         @include flex-input;
         flex-grow: 1;
+
         &__start, &__end {
             @include input-dimensions;
             @include input-color;
-           
+
+            font-size: 1.5rem;
         }
-
-
-
-
     }
 
     .flightInput {
         @include flex-input;
-        flex-grow: 1;
+        flex-grow: 1;        
 
         .inputField {
             @include input-dimensions;
             @include input-color;
-           
+            font-size: 1.8rem;
+
+            &--left::placeholder, &--right::placeholder {
+                color: $neutral-cool-grey-1;
+            }
         }
 
     }

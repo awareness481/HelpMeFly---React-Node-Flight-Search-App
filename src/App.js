@@ -4,9 +4,15 @@ import "./sass/_main.scss";
 import Input from './js/components/FilledInput';
 import SubmitButton from './js/components/Button';
 
+import moment from 'moment';
+
+
 // DatePicker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+// FA Icons
+import faPlaneDeparture from "@fortawesome/fontawesome-free/svgs/solid/plane-departure.svg";
 
 class App extends React.Component {
   constructor(props) {
@@ -46,9 +52,11 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+
   render() {
     return (
       <div className="container">
+        <div className='bg'></div>
         <form onSubmit={this.handleSubmit} className="flightForm">
           <div className="flightInput">
             <Input
@@ -56,23 +64,27 @@ class App extends React.Component {
               class="inputField inputField--left" 
               dest={this.state.start}
               name="start"
+              plch="From: City, Station or Airport"
             />
             <Input
               change={this.handleChange}
               class="inputField inputField--right" 
               dest={this.state.destination}
               name="destination"
+              plch="To: City, Station or Airport"
             />
           </div>
           <div className="dates">
             <DatePicker
               className="dates__start"
               selected={this.state.startDate}
+              value={moment(this.state.startDate, "MM-DD-YYYY").format("Do MMMM")}
               onChange={e => this.handleDate(e, "startDate")}
             />
             <DatePicker
               className="dates__end"
               selected={this.state.endDate}
+              value={moment(this.state.endDate).format("Do MMMM")}
               onChange={e => this.handleDate(e, "endDate")}
             />
           </div>
