@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+require('./routes/searchRoutes')(app);
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 

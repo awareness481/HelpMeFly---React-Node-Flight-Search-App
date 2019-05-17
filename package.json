@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "start": "node index.js",
-      "server": "nodemon index.js",
-      "client": "npm run start --prefix client",
-      "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
-      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-      "webhook": "lt -p 5000 -s awareness481-emaily"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
-    "express": "^4.17.0"
+    "express": "^4.17.0",
+    "unirest": "^0.6.0"
   }
 }
