@@ -1,5 +1,6 @@
 const keys = require('../config/keys');
 const unirest = require('unirest');
+const _ = require ('lodash');
 
 module.exports = (app) => {
   app.get('/flights',
@@ -12,11 +13,11 @@ module.exports = (app) => {
         .send("cabinClass=business")
         .send("children=0")
         .send("infants=0")
-        .send("country=US")
+        .send("country=UK")
         .send("currency=USD")
         .send("locale=en-US")
-        .send("originPlace=SFO-sky")
-        .send("destinationPlace=LHR-sky")
+        .send("originPlace=LOND-sky")
+        .send("destinationPlace=PARI-sky")
         .send("outboundDate=2019-09-01")
         .send("adults=1")
         .end(function (result) {
@@ -25,7 +26,16 @@ module.exports = (app) => {
             .header("X-RapidAPI-Host", keys.XRapidAPIHost)
             .header("X-RapidAPI-Key", keys.XRapidAPIKey)
             .end(function (result) {
-              console.log(result.status, result.headers, result.body);
+              const values = _.map(result.body.Itineraries, (e) => {
+                const ids = {
+                  in: e.InboundLegId,
+                  out: e.OutboundLegId,
+                  price: e.PricingOptions[0].Price,
+                  url: e.PricingOptions[0].DeeplinkUrl
+                }
+                return ids;
+               })
+               res.send(values);
             });
         })
     }
